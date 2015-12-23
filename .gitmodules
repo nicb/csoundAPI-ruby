@@ -1,0 +1,3 @@
+[submodule "ext/csound"]
+	path = ext/csound
+	url = https://github.com/csound/csound
