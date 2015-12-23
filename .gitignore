@@ -30,3 +30,6 @@
 
 # Debug files
 *.dSYM/
+
+# csound6 external build lib
+/ext/cs6make
