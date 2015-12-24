@@ -1,7 +1,11 @@
 language: ruby
+sudo: required
 rvm:
  - 2.2.2
 
-# uncomment this line if your project needs to run something other than `rake`:
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y libsndfile1-dev
+
 script: 
  - bundle exec rake csound:build
