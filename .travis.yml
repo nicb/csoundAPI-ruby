@@ -10,3 +10,14 @@ before_install:
 script: 
  - bundle exec rake csound:build
  - bundle exec rake test
+
+#
+# this is to integrate gitter
+#
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/58e16cc964053ecea477
+    on_success: always  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: never     # options: [always|never|change] default: always
