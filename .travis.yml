@@ -9,3 +9,4 @@ before_install:
 
 script: 
  - bundle exec rake csound:build
+ - bundle exec rake test
