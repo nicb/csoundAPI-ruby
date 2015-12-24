@@ -1,5 +1,7 @@
 # Ruby bindings to the Csound API
 
+[![Join the chat at https://gitter.im/nicb/csoundAPI-ruby](https://badges.gitter.im/nicb/csoundAPI-ruby.svg)](https://gitter.im/nicb/csoundAPI-ruby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 I wish somebody else had done it, so that I did not have to do it. However, so
 far nobody has undertaken this task, so I'll give it a try.
 
