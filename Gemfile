@@ -8,3 +8,5 @@ group :test do
   gem 'rspec'
   gem "codeclimate-test-reporter", require: nil
 end
+
+gem 'ruby-FFI-utilities', :git => 'https://github.com/nicb/ruby-FFI-utilities'

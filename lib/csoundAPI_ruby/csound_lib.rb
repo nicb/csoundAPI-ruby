@@ -12,7 +12,7 @@ module CsoundAPIRuby
     #
     # basic function handlers
     #
-    attach_function :csoundCreate, [:int], :pointer
+    attach_function :csoundCreate, [:pointer], :pointer
     attach_function :csoundCompile, [:pointer, :int, :pointer], :int
     attach_function :csoundPerformKsmps, [:pointer], :int
     attach_function :csoundCleanup, [:pointer], :void

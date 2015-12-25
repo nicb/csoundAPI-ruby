@@ -1,5 +1,6 @@
 Gemfile.lock
 /coverage/
+.byebug_history
 
 # Object files
 *.o
