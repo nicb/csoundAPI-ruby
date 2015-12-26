@@ -7,9 +7,9 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y libsndfile1-dev
 
-#script: 
-# - bundle exec rake csound:build
-# - bundle exec rake test
+script: 
+  - bundle exec rake csound:build
+  - bundle exec rake test
 
 #
 # this is to integrate gitter

@@ -10,8 +10,3 @@ group :test do
 end
 
 gem 'ruby-FFI-utilities', :git => 'https://github.com/nicb/ruby-FFI-utilities'
-
-#
-# after everything has been installed, we must compile the +csound+ library
-#
-exec 'rake csound:build'
