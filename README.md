@@ -2,6 +2,9 @@
 
 [![Join the chat at https://gitter.im/nicb/csoundAPI-ruby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nicb/csoundAPI-ruby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/nicb/csoundAPI-ruby.svg?branch=master)](https://travis-ci.org/nicb/csoundAPI-ruby)
+[![Code Climate](https://codeclimate.com/github/nicb/csoundAPI-ruby/badges/gpa.svg)](https://codeclimate.com/github/nicb/csoundAPI-ruby)
+[![Test Coverage](https://codeclimate.com/github/nicb/csoundAPI-ruby/badges/coverage.svg)](https://codeclimate.com/github/nicb/csoundAPI-ruby/coverage)
+[![Issue Count](https://codeclimate.com/github/nicb/csoundAPI-ruby/badges/issue_count.svg)](https://codeclimate.com/github/nicb/csoundAPI-ruby)
 
 This is a Ruby binding gem to the csound sound software compiler API using FFI.
 
@@ -49,6 +52,13 @@ and this will produce the same result as if you called csound from the usual
 ## Help Wanted
 
 **HELP WANTED** and most welcome.
+
+## Required
+
+Some applications are required to compile the `csound` library:
+
+* [`make`](https://www.gnu.org/software/make/)
+* [`cmake`](https://cmake.org/)
 
 ## Installation
 
