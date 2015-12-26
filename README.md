@@ -39,7 +39,7 @@ csoundDestroy(cs)
 
 exit(res)
 ```
-(you can find this snippet [here](./share/doc/csound_low_cli.rb)). Then you
+(you can find this snippet [here](./share/doc/examples/csound_low_cli.rb)). Then you
 can run from a terminal:
 
 ```sh
