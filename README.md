@@ -11,7 +11,37 @@ This is a Ruby binding gem to the csound sound software compiler API using FFI.
 I wish somebody else had done it, so that I did not have to do it. However, so
 far nobody has undertaken this task, so I'll give it a try.
 
-## Status
+## Requirements
+
+Some applications are required to compile the `csound` library:
+
+* [`make`](https://www.gnu.org/software/make/)
+* [`cmake`](https://cmake.org/)
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'csoundAPI-ruby'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install csoundAPI-ruby
+
+After you have installed the `csoundAPI-ruby` gem, you **have to** run the
+following command:
+
+    $ bundle exec rake csound:compile
+
+which will compile the `csound` library for you.
+
+## Usage
 
 Just started, so don't expect anything wonderful any time soon.
 
@@ -52,40 +82,6 @@ and this will produce the same result as if you called csound from the usual
 ## Help Wanted
 
 **HELP WANTED** and most welcome.
-
-## Required
-
-Some applications are required to compile the `csound` library:
-
-* [`make`](https://www.gnu.org/software/make/)
-* [`cmake`](https://cmake.org/)
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'csoundAPI-ruby'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install csoundAPI-ruby
-
-After you have installed the `csoundAPI-ruby` gem, you **have to** run the
-following command:
-
-    $ bundle exec rake csound:compile
-
-which will compile the `csound` library for you.
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
