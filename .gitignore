@@ -36,4 +36,5 @@ Gemfile.lock
 *.dSYM/
 
 # csound6 external build lib
-/ext/cs6make
+/ext/cs6make/
+/tmp/

@@ -3,12 +3,48 @@
 [![Join the chat at https://gitter.im/nicb/csoundAPI-ruby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nicb/csoundAPI-ruby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/nicb/csoundAPI-ruby.svg?branch=master)](https://travis-ci.org/nicb/csoundAPI-ruby)
 
+This is a Ruby binding gem to the csound sound software compiler API using FFI.
+
 I wish somebody else had done it, so that I did not have to do it. However, so
 far nobody has undertaken this task, so I'll give it a try.
 
 ## Status
 
 Just started, so don't expect anything wonderful any time soon.
+
+However, we already got the basic command line working. You can write
+something like:
+
+```ruby
+#!/usr/bin/env ruby
+#
+# csound_low_cli.rb: this is a command-line interface command that replicates
+# the regular 'C' +csound+ command line.
+#
+require 'bundler/setup'
+require 'csoundAPI_ruby'
+require 'FFI/utilities'
+
+include CsoundAPIRuby::CsoundLib
+
+cs = csoundCreate(nil)
+argv = [$0] + ARGV # ARGV does not have argv[0] as in C, so we need to add it in front
+res = csoundCompile(cs, argv.size, FFI::Utilities.set_argv(argv))
+while(csoundPerformKsmps(cs) == 0); end
+csoundCleanup(cs)
+csoundDestroy(cs)
+
+exit(res)
+```
+(you can find this snippet [here](./share/doc/csound_low_cli.rb)). Then you
+can run from a terminal:
+
+```sh
+$ ./csound_low_cli.rb -dWo ./test.wav spec/fixtures/csound/simple.csd
+```
+
+and this will produce the same result as if you called csound from the usual
+`C` command.
 
 ## Help Wanted
 
