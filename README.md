@@ -37,7 +37,7 @@ Or install it yourself as:
 After you have installed the `csoundAPI-ruby` gem, you **have to** run the
 following command:
 
-    $ bundle exec rake csound:compile
+    $ bundle exec rake csound:build
 
 which will compile the `csound` library for you.
 
