@@ -34,6 +34,25 @@ module CsoundAPIRuby
     attach_function :csoundDestroy, [:pointer], :void
     attach_function :csoundReset, [:pointer], :void
 
+    #
+    # attribute functions
+    #
+    # NOTE: unless proper counter-indication is given, csound's MYFLT are
+    # considered to be :double
+    #
+    attach_function :csoundGetSr, [:pointer], :double
+    attach_function :csoundGetKr, [:pointer], :double
+    attach_function :csoundGetKsmps, [:pointer], :uint32
+    attach_function :csoundGetNchnls, [:pointer], :uint32
+    attach_function :csoundGetNchnlsInput, [:pointer], :uint32
+    attach_function :csoundGet0dBFS, [:pointer], :double
+    attach_function :csoundGetCurrentTimeSamples, [:pointer], :int64
+    attach_function :csoundGetSizeOfMYFLT, [:pointer], :int
+    attach_function :csoundGetHostData, [:pointer], :pointer
+    attach_function :csoundSetHostData, [:pointer, :pointer], :void
+    attach_function :csoundSetOption, [:pointer, :pointer], :int
+    attach_function :csoundGetDebug, [:pointer], :int
+    attach_function :csoundSetDebug, [:pointer, :int], :void
 
   end
 
