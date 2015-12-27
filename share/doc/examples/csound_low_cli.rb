@@ -12,7 +12,7 @@ include CsoundAPIRuby::CsoundLib
 cs = csoundCreate(nil)
 argv = [$0] + ARGV # ARGV does not have argv[0] as in C, so we need to add it in front
 res = csoundCompile(cs, argv.size, FFI::Utilities.set_argv(argv))
-while(csoundPerformKsmps(cs) == 0); end
+csoundPerform(cs)
 csoundCleanup(cs)
 csoundDestroy(cs)
 

@@ -63,7 +63,7 @@ include CsoundAPIRuby::CsoundLib
 cs = csoundCreate(nil)
 argv = [$0] + ARGV # ARGV does not have argv[0] as in C, so we need to add it in front
 res = csoundCompile(cs, argv.size, FFI::Utilities.set_argv(argv))
-while(csoundPerformKsmps(cs) == 0); end
+csoundPerform(cs)
 csoundCleanup(cs)
 csoundDestroy(cs)
 
@@ -73,7 +73,7 @@ exit(res)
 can run from a terminal:
 
 ```sh
-$ ./csound_low_cli.rb -dWo ./test.wav spec/fixtures/csound/simple.csd
+$ ./share/doc/examples/csound_low_cli.rb -dWo ./test.wav spec/fixtures/csound/simple.csd
 ```
 
 and this will produce the same result as if you called csound from the usual
