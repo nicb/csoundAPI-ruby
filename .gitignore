@@ -38,3 +38,4 @@ Gemfile.lock
 # csound6 external build lib
 /ext/cs6make/
 /tmp/
+/ext/.csound_library_built
