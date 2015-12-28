@@ -7,7 +7,7 @@ require 'bundler/setup'
 require 'csoundAPI_ruby'
 require 'FFI/utilities'
 
-include CsoundAPIRuby::CsoundLib
+include CsoundAPIRuby::Lib::Functions
 
 cs = csoundCreate(nil)
 argv = [$0] + ARGV # ARGV does not have argv[0] as in C, so we need to add it in front

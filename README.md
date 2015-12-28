@@ -56,7 +56,7 @@ require 'bundler/setup'
 require 'csoundAPI_ruby'
 require 'FFI/utilities'
 
-include CsoundAPIRuby::CsoundLib
+include CsoundAPIRuby::Lib::Functions
 
 cs = csoundCreate(nil)
 argv = [$0] + ARGV # ARGV does not have argv[0] as in C, so we need to add it in front
@@ -77,34 +77,10 @@ $ ./share/doc/examples/csound_low_cli.rb -dWo ./test.wav spec/fixtures/csound/si
 and this will produce the same result as if you called csound from the usual
 `C` command.
 
-### Implemented API
+Details about the parts of the API already implemented may be found on the
+following pages:
 
-* `CsoundAPIRuby::CsoundLib::csoundCreate, [:pointer], :pointer`
-* `CsoundAPIRuby::CsoundLib::csoundCompile, [:pointer, :int, :pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundCompileArgs, [:pointer, :int, :pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundCompileCsd, [:pointer, :pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundCompileOrc, [:pointer, :pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundPerformKsmps, [:pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundPerform, [:pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundPerformBuffer, [:pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundStart, [:pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundStop, [:pointer], :void`
-* `CsoundAPIRuby::CsoundLib::csoundCleanup, [:pointer], :void`
-* `CsoundAPIRuby::CsoundLib::csoundDestroy, [:pointer], :void`
-* `CsoundAPIRuby::CsoundLib::csoundReset, [:pointer], :void`
-* `CsoundAPIRuby::CsoundLib::csoundGetSr, [:pointer], :double`
-* `CsoundAPIRuby::CsoundLib::csoundGetKr, [:pointer], :double`
-* `CsoundAPIRuby::CsoundLib::csoundGetKsmps, [:pointer], :uint32`
-* `CsoundAPIRuby::CsoundLib::csoundGetNchnls, [:pointer], :uint32`
-* `CsoundAPIRuby::CsoundLib::csoundGetNchnlsInput, [:pointer], :uint32`
-* `CsoundAPIRuby::CsoundLib::csoundGet0dBFS, [:pointer], :double`
-* `CsoundAPIRuby::CsoundLib::csoundGetCurrentTimeSamples, [:pointer], :int64`
-* `CsoundAPIRuby::CsoundLib::csoundGetSizeOfMYFLT, [:pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundGetHostData, [:pointer], :pointer`
-* `CsoundAPIRuby::CsoundLib::csoundSetHostData, [:pointer, :pointer], :void`
-* `CsoundAPIRuby::CsoundLib::csoundSetOption, [:pointer, :pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundGetDebug, [:pointer], :int`
-* `CsoundAPIRuby::CsoundLib::csoundSetDebug, [:pointer, :int], :void`
+* [functions](lib/csoundAPI_ruby/lib/functions/README.md)
 
 ## Help Wanted
 

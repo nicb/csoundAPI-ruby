@@ -6,5 +6,5 @@ end
 
 %w(
   version
-  csound_lib
+  lib
 ).each { |f| require File.join(CsoundAPIRuby::PATH, f) }
