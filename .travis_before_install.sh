@@ -10,7 +10,7 @@ fi
 if [ $TRAVIS_OS_NAME = 'osx' ]
 then
   sudo brew update
-  sudo brew install libsndfile1
+  sudo brew install libsndfile
   exit $?
 fi
 
