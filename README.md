@@ -17,6 +17,7 @@ Some applications are required to compile the `csound` library:
 
 * [`make`](https://www.gnu.org/software/make/)
 * [`cmake`](https://cmake.org/)
+* [`sndfile` library](http://www.mega-nerd.com/libsndfile/)
 
 ## Installation
 
