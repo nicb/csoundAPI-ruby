@@ -19,6 +19,7 @@ Some applications are required to compile the `csound` library:
 * [`cmake`](https://cmake.org/)
 * [`sndfile` library](http://www.mega-nerd.com/libsndfile/)
 
+## FOR USERS
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -86,6 +87,7 @@ following pages:
 
 **HELP WANTED** and most welcome.
 
+## FOR DEVELOPERS
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/csoundAPI-ruby/fork )
