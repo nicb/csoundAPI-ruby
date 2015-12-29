@@ -24,16 +24,15 @@ Some applications are required to compile the `csound` library:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'csoundAPI-ruby'
+gem 'csoundAPI-ruby', :git => 'https://github.com/nicb/csoundAPI-ruby.git'
 ```
-
 And then execute:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install csoundAPI-ruby
+```sh
+cd csoundAPI-ruby
+git submodule update --init --recursive
+bundle install
+```
 
 After you have installed the `csoundAPI-ruby` gem, you **have to** run the
 following command:
@@ -90,10 +89,28 @@ following pages:
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/csoundAPI-ruby/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+1. Clone it (`git clone --recursive https://github.com/[my-github-username]/csoundAPI-ruby.git`)
+1. Create your feature branch (`git checkout -b my-new-feature`)
+1. Commit your changes (`git commit -am 'Add some feature'`)
+1. Push to the branch (`git push origin my-new-feature`)
+1. Create a new Pull Request
+
+**PLEASE NOTE**: since we're using a submodule to pull in the `csound`
+library, you need to add the `--recursive` flag whenever you `git clone` or
+you want to update the `csound` repo, as in:
+
+```sh
+  git clone --recursive https://github.com/[my-github-username]/csoundAPI-ruby.git
+```
+
+or 
+
+```sh
+  cd csoundAPI-ruby
+  git submodule update --init --recursive
+```
+
+(I found these instructions [here](http://stackoverflow.com/questions/3796927/how-to-git-clone-including-submodules)).
 
 ## License
 

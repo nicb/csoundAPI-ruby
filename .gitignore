@@ -40,3 +40,12 @@ Gemfile.lock
 /tmp/
 /ext/.csound_library_built
 /lib/csoundAPI_ruby/lib/data/[^h]*.rb # the data structure files are generated automatically (except the 'header.rb' file)
+
+# no core dumps
+core
+
+# no MacOsX crap
+.DS_Store
+
+# no editor crap
+*~
