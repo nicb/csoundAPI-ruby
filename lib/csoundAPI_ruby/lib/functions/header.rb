@@ -1,4 +1,5 @@
 require 'ffi'
+require File.join('FFI', 'utilities')
 
 module CsoundAPIRuby
 
@@ -8,12 +9,7 @@ module CsoundAPIRuby
 
       extend FFI::Library
 
-      LIBRARY_SUFFIX = case RUBY_PLATFORM
-                       when /linux/i then '.so'
-                       when /darwin/i then '.dylib'
-                       when /windows/i then '.dll'
-                       else raise StandardError, "Unknown platform #{RUBY_PLATFORM}"
-                       end
+      LIBRARY_SUFFIX = FFI::Utilities.library_suffix
       CSOUND_LIBRARY_PATH = File.expand_path(File.join(['..'] * 5, 'ext', 'cs6make', "libcsnd6#{LIBRARY_SUFFIX}"), __FILE__)
       ffi_lib CSOUND_LIBRARY_PATH
 
