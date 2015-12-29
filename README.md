@@ -19,8 +19,9 @@ Some applications are required to compile the `csound` library:
 * [`cmake`](https://cmake.org/)
 * [`sndfile` library](http://www.mega-nerd.com/libsndfile/)
 
-## FOR USERS
-## Installation
+## Instructions for Users
+
+### Installation
 
 Add this line to your application's Gemfile:
 
@@ -42,7 +43,7 @@ following command:
 
 which will compile the `csound` library for you.
 
-## Usage
+### Usage
 
 We already got the basic command line working. You can write
 something like:
@@ -83,12 +84,13 @@ following pages:
 
 * [functions](lib/csoundAPI_ruby/lib/functions/README.md)
 
-## Help Wanted
+## Instructions for Developers
+
+### Help Wanted
 
 **HELP WANTED** and most welcome.
 
-## FOR DEVELOPERS
-## Contributing
+### Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/csoundAPI-ruby/fork )
 1. Clone it (`git clone --recursive https://github.com/[my-github-username]/csoundAPI-ruby.git`)
@@ -112,7 +114,7 @@ or
   git submodule update --init --recursive
 ```
 
-(I found these instructions [here](http://stackoverflow.com/questions/3796927/how-to-git-clone-including-submodules)).
+(I found these latter instructions [here](http://stackoverflow.com/questions/3796927/how-to-git-clone-including-submodules)).
 
 ## License
 
