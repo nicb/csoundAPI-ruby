@@ -64,7 +64,7 @@ module CsoundAPIRuby
         end
         @@@
 
-        sattr_accessor layout.members
+        attr_accessor *layout.members
 
         class << self
 

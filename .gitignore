@@ -39,7 +39,10 @@ Gemfile.lock
 /ext/cs6make/
 /tmp/
 /ext/.csound_library_built
-/lib/csoundAPI_ruby/lib/data/[^h]*.rb # the data structure files are generated automatically (except the 'header.rb' file)
+#
+# auto-generated struct files
+#
+/lib/csoundAPI_ruby/lib/data/csound_params.rb
 
 # no core dumps
 core
