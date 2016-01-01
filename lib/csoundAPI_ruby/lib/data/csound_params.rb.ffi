@@ -1,5 +1,3 @@
-#require 'ffi'
-
 module CsoundAPIRuby
   module Lib
     module Data
@@ -54,11 +52,11 @@ module CsoundAPIRuby
           s.field :compute_weights, :int           # deprecated, kept for backwards comp. 
           s.field :realtime_mode, :int             # use realtime priority mode, 0 or 1
           s.field :sample_accurate, :int           # use sample-level score event accuracy
-          s.field :sample_rate_override, :double   # overriding sample rate (was a MYFLT)
-          s.field :control_rate_override, :double  # overriding control rate (was a MYFLT)
+          s.field :sample_rate_override, :MYFLT    # overriding sample rate
+          s.field :control_rate_override, :MYFLT   # overriding control rate
           s.field :nchnls_override, :int           # overriding number of out channels
           s.field :nchnls_i_override, :int         # overriding number of in channels
-          s.field :e0dbfs_override, :double        # overriding 0dbfs (was a MYFLT)
+          s.field :e0dbfs_override, :MYFLT         # overriding 0dbfs
           s.field :daemon, :int	                   # daemon mode
           s.field :ksmps_override, :int            # ksmps override
         end
@@ -68,19 +66,19 @@ module CsoundAPIRuby
 
         class << self
 
-          #
-          # +create(csound_struct_pointer)+
-          #
-          # create is the actual method that creates a +CsoundParams+ class.
-          # It is called through a csound_struct_pointer which holds the
-          # actual +CSOUND_PARAMS+ +C-class+ and returns that.
-          #
-          def create(csound_struct_pointer)
-            csp = FFI::MemoryPointer.new(:uchar, CsoundParams.size)
-            cparams = CsoundParams.send(:new, csp)
-            CsoundAPIRuby::Lib::Functions.csoundGetParams(csound_struct_pointer, cparams)
-            cparams
-          end
+#         #
+#         # +create(csound_struct_pointer)+
+#         #
+#         # create is the actual method that creates a +CsoundParams+ class.
+#         # It is called through a csound_struct_pointer which holds the
+#         # actual +CSOUND_PARAMS+ +C-class+ and returns that.
+#         #
+#         def create(csound_struct_pointer)
+#           csp = FFI::MemoryPointer.new(:uchar, CsoundParams.size)
+#           cparams = CsoundParams.send(:new, csp)
+#           CsoundAPIRuby::Lib::Functions.csoundGetParams(csound_struct_pointer, cparams)
+#           cparams
+#         end
 
         end
 

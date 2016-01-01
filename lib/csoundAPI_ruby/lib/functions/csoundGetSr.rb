@@ -6,7 +6,7 @@ module CsoundAPIRuby
 
       extend FFI::Library
   
-      attach_function :csoundGetSr, [:pointer], :double
+      attach_function :csoundGetSr, [:pointer], :MYFLT
 
     end
 

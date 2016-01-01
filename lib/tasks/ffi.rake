@@ -4,6 +4,7 @@ namespace :FFI do
     require 'ffi'
     require 'ffi/tools/generator'
     require 'ffi/tools/struct_generator'
+    require 'bundler/setup'
 
     EXT_INCLUDE_CSOUND_PATH = File.expand_path(File.join(['..'] * 3, 'ext', 'csound', 'include'), __FILE__)
     EXT_INCLUDE_CS6MAKE_PATH = File.expand_path(File.join(['..'] * 3, 'ext', 'cs6make', 'include'), __FILE__)
