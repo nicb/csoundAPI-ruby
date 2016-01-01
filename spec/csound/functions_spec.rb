@@ -1,7 +1,9 @@
-require_relative '../spec_helper'
-require_relative '../utilities/quiet_stderr'
+require_relative File.join('..', 'spec_helper')
+require_relative File.join('..', 'utilities')
 
 describe CsoundAPIRuby::Lib::Functions do
+
+  include Spec::Utilities
 
   before :example do
     @csd_filename = File.join(SPEC_CSOUND_FIXTURE_PATH, 'simple.csd')
@@ -248,29 +250,6 @@ describe CsoundAPIRuby::Lib::Functions do
 
     end
 
-  end
-
-  def csound_perform()
-    res = nil
-    csound_init do
-      |cs|
-      res = CsoundAPIRuby::Lib::Functions::csoundCompile(cs, @args.size, FFI::Utilities.set_argv(@args))
-      raise StandardError, "CsoundAPIRuby::Lib::Functions::csoundCompile returned #{res}" unless res == 0
-
-      yield(cs)
-    end
-    res
-  end
-
-  def csound_init()
-    cs = CsoundAPIRuby::Lib::Functions::csoundCreate(nil)
-
-    res = yield(cs)
-
-    res
-  ensure
-    CsoundAPIRuby::Lib::Functions::csoundCleanup(cs)
-    CsoundAPIRuby::Lib::Functions::csoundDestroy(cs)
   end
 
 end

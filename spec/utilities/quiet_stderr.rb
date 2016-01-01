@@ -1,9 +1,15 @@
-def quiet_stderr
-  stderr_backup = $stderr.dup
-  $stderr.reopen('/dev/null', 'w')
+module Spec
+  module Utilities
 
-  yield
+    def quiet_stderr
+      stderr_backup = $stderr.dup
+      $stderr.reopen('/dev/null', 'w')
+    
+      yield
+    
+    ensure
+      $stderr.reopen(stderr_backup)
+    end
 
-ensure
-  $stderr.reopen(stderr_backup)
+  end
 end

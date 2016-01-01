@@ -6,4 +6,5 @@ end
 
 %w(
   functions
+  data
 ).each { |f| require File.join(CsoundAPIRuby::Lib::PATH, f) }

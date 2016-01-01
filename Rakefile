@@ -4,7 +4,7 @@ begin
   require 'byebug'
   require 'rspec/core/rake_task'
   
-  RSpec::Core::RakeTask.new(:test)
+  RSpec::Core::RakeTask.new(:test => ['FFI:struct:generate', 'fixtures:C:build'])
 rescue LoadError
   # no rspec available
 end

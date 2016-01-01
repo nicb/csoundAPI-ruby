@@ -34,4 +34,5 @@ end
   csoundSetOption
   csoundGetDebug
   csoundSetDebug
+  csoundGetParams
 ).each { |f| require File.join(CsoundAPIRuby::Lib::Functions::PATH, f) }

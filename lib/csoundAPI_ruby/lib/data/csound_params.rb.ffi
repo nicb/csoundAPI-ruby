@@ -1,0 +1,91 @@
+#require 'ffi'
+
+module CsoundAPIRuby
+  module Lib
+    module Data
+
+      #
+      # <tt>CsoundParams</tt>
+      #
+      # the +CsoundParams+ class stands for the <tt>CSOUND_PARAMS</tt>
+      # library struct (https://csound.github.io/docs/api/structCSOUND__PARAMS.html).
+      #
+      # It cannot be created directly with the +new+ method, but it can be
+      # created like this:
+      #
+      # ```
+      # CsoundParams.create(csp)
+      # ```
+      #
+      # where `csp` is a +Csound+ struct pointer.
+      #
+      class CsoundParams < FFI::Utilities::Struct
+
+        private_class_method :new
+
+        @@@
+        struct do
+          |s|
+          s.name 'CSOUND_PARAMS'
+          s.include File.join(CsoundAPIRuby::Lib::Data::CSOUND_INCLUDE_PATH, 'csound.h')
+          s.field :debug_mode, :int	               # debug mode, 0 or 1
+          s.field :buffer_frames, :int	           # number of frames in in/out buffers
+          s.field :hardware_buffer_frames, :int	   # ibid. hardware
+          s.field :displays, :int	                 # graph displays, 0 or 1
+          s.field :ascii_graphs, :int	             # use ASCII graphs, 0 or 1
+          s.field :postscript_graphs, :int	       # use postscript graphs, 0 or 1
+          s.field :message_level, :int             # message printout control
+          s.field :tempo, :int                     # tempo (sets Beatmode) 
+          s.field :ring_bell, :int                 # bell, 0 or 1
+          s.field :use_cscore, :int                # use cscore for processing
+          s.field :terminate_on_midi, :int         # terminate performance at the end of midifile, 0 or 1
+          s.field :heartbeat, :int                 # print heart beat, 0 or 1
+          s.field :defer_gen01_load, :int          # defer GEN01 load, 0 or 1
+          s.field :midi_key, :int	                 # pfield to map midi key no
+          s.field :midi_key_cps, :int	             # pfield to map midi key no as cps
+          s.field :midi_key_oct, :int	             # pfield to map midi key no as oct
+          s.field :midi_key_pch, :int	             # pfield to map midi key no as pch
+          s.field :midi_velocity, :int             # pfield to map midi velocity
+          s.field :midi_velocity_amp, :int         # pfield to map midi velocity as amplitude
+          s.field :no_default_paths, :int          # disable relative paths from files, 0 or 1
+          s.field :number_of_threads, :int         # number of threads for multicore performance
+          s.field :syntax_check_only, :int         # do not compile, only check syntax
+          s.field :csd_line_counts, :int           # csd line error reporting
+          s.field :compute_weights, :int           # deprecated, kept for backwards comp. 
+          s.field :realtime_mode, :int             # use realtime priority mode, 0 or 1
+          s.field :sample_accurate, :int           # use sample-level score event accuracy
+          s.field :sample_rate_override, :double   # overriding sample rate (was a MYFLT)
+          s.field :control_rate_override, :double  # overriding control rate (was a MYFLT)
+          s.field :nchnls_override, :int           # overriding number of out channels
+          s.field :nchnls_i_override, :int         # overriding number of in channels
+          s.field :e0dbfs_override, :double        # overriding 0dbfs (was a MYFLT)
+          s.field :daemon, :int	                   # daemon mode
+          s.field :ksmps_override, :int            # ksmps override
+        end
+        @@@
+
+        sattr_accessor layout.members
+
+        class << self
+
+          #
+          # +create(csound_struct_pointer)+
+          #
+          # create is the actual method that creates a +CsoundParams+ class.
+          # It is called through a csound_struct_pointer which holds the
+          # actual +CSOUND_PARAMS+ +C-class+ and returns that.
+          #
+          def create(csound_struct_pointer)
+            csp = FFI::MemoryPointer.new(:uchar, CsoundParams.size)
+            cparams = CsoundParams.send(:new, csp)
+            CsoundAPIRuby::Lib::Functions.csoundGetParams(csound_struct_pointer, cparams)
+            cparams
+          end
+
+        end
+
+      end
+
+    end
+  end
+end
