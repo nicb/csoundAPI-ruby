@@ -5,6 +5,6 @@ module CsoundAPIRuby
 end
 
 %w(
-  functions
   data
+  functions
 ).each { |f| require File.join(CsoundAPIRuby::Lib::PATH, f) }

@@ -47,7 +47,8 @@ Gemfile.lock
 #
 # C fixture executables
 #
-/spec/fixtures/C/sizeof_CSOUND_PARAMS*
+/spec/fixtures/C/sizeof_CSOUND_PARAMS
+/spec/fixtures/C/sizeof_MYFLT
 
 # no core dumps
 core

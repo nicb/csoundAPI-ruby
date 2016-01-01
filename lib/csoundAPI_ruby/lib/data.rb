@@ -9,6 +9,7 @@ end
 begin
   %w(
     header
+    myflt
     csound_params
   ).each { |f| require File.join(CsoundAPIRuby::Lib::Data::PATH, f) }
 rescue LoadError => msg

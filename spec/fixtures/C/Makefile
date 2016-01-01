@@ -15,7 +15,7 @@ ifeq ($(OS_NAME), osx)
 	OSFX = o
 endif
 
-TARGETS=sizeof_CSOUND_PARAMS
+TARGETS=sizeof_CSOUND_PARAMS sizeof_MYFLT
 SOURCES=$(TARGETS:=.c)
 TOP=../../..
 EXTPATH=$(TOP)/ext
