@@ -44,6 +44,11 @@ Gemfile.lock
 #
 /lib/csoundAPI_ruby/lib/data/csound_params.rb
 
+#
+# C fixture executables
+#
+/spec/fixtures/C/sizeof_CSOUND_PARAMS*
+
 # no core dumps
 core
 

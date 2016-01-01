@@ -3,12 +3,14 @@ if ENV['CODECLIMATE_REPO_TOKEN']
   CodeClimate::TestReporter.start do
     add_filter '/spec/'
     add_filter '/lib/csoundAPI_ruby/lib/data.rb'
+    add_filter '/lib/tasks/'
   end
 else
 	require 'simplecov'
   SimpleCov.start do
     add_filter '/spec/'
     add_filter '/lib/csoundAPI_ruby/lib/data.rb'
+    add_filter '/lib/tasks/'
   end
 end
 $LOAD_PATH.unshift File.expand_path(File.join(['..'] * 2, 'lib'), __FILE__)
