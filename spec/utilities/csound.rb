@@ -12,11 +12,11 @@ module Spec
       CsoundAPIRuby::Lib::Functions::csoundDestroy(cs)
     end
 
-    def csound_perform()
+    def csound_perform(args = [])
       res = nil
       csound_init do
         |cs|
-        res = CsoundAPIRuby::Lib::Functions::csoundCompile(cs, @args.size, FFI::Utilities.set_argv(@args))
+        res = CsoundAPIRuby::Lib::Functions::csoundCompile(cs, args.size, FFI::Utilities.set_argv(args))
         raise StandardError, "CsoundAPIRuby::Lib::Functions::csoundCompile returned #{res}" unless res == 0
   
         yield(cs)

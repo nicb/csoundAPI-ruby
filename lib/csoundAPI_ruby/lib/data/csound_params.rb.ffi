@@ -64,24 +64,6 @@ module CsoundAPIRuby
 
         attr_accessor *layout.members
 
-        class << self
-
-#         #
-#         # +create(csound_struct_pointer)+
-#         #
-#         # create is the actual method that creates a +CsoundParams+ class.
-#         # It is called through a csound_struct_pointer which holds the
-#         # actual +CSOUND_PARAMS+ +C-class+ and returns that.
-#         #
-#         def create(csound_struct_pointer)
-#           csp = FFI::MemoryPointer.new(:uchar, CsoundParams.size)
-#           cparams = CsoundParams.send(:new, csp)
-#           CsoundAPIRuby::Lib::Functions.csoundGetParams(csound_struct_pointer, cparams)
-#           cparams
-#         end
-
-        end
-
       end
 
     end

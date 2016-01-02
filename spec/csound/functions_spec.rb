@@ -136,43 +136,43 @@ describe CsoundAPIRuby::Lib::Functions do
 
       it 'returns the audio sample rate' do
         quiet_stderr do
-          csound_perform { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetSr(cs)).to eq(@sr) }
+          csound_perform(@args) { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetSr(cs)).to eq(@sr) }
         end
       end
 
       it 'returns the control sample rate' do
         quiet_stderr do
-          csound_perform { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetKr(cs)).to eq(@kr) }
+          csound_perform(@args) { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetKr(cs)).to eq(@kr) }
         end
       end
 
       it 'returns the ksmps' do
         quiet_stderr do
-          csound_perform { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetKsmps(cs)).to eq(@ksmps) }
+          csound_perform(@args) { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetKsmps(cs)).to eq(@ksmps) }
         end
       end
 
       it 'returns the number of channels' do
         quiet_stderr do
-          csound_perform { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetNchnls(cs)).to eq(@nchnls) }
+          csound_perform(@args) { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetNchnls(cs)).to eq(@nchnls) }
         end
       end
 
       it 'returns the number of input channels' do
         quiet_stderr do
-          csound_perform { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetNchnlsInput(cs)).to eq(@nchnls) }
+          csound_perform(@args) { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetNchnlsInput(cs)).to eq(@nchnls) }
         end
       end
 
       it 'returns the number of 0 dBFS' do
         quiet_stderr do
-          csound_perform { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGet0dBFS(cs)).to eq(@_0dBFS) }
+          csound_perform(@args) { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGet0dBFS(cs)).to eq(@_0dBFS) }
         end
       end
 
       it 'returns the current time in samples' do
         quiet_stderr do
-          csound_perform do
+          csound_perform(@args) do
             |cs|
             res = 0
             cnt = 0
@@ -192,14 +192,14 @@ describe CsoundAPIRuby::Lib::Functions do
 
       it 'returns the size of csound\'s MYFLT' do
         quiet_stderr do
-          csound_perform { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetSizeOfMYFLT(cs)).to eq(8) } # FIXME: is this machine-dependent?
+          csound_perform(@args) { |cs| expect(CsoundAPIRuby::Lib::Functions::csoundGetSizeOfMYFLT(cs)).to eq(CsoundAPIRuby::Lib::Data::MYFLT.size) }
         end
       end
 
       it 'is able to set and retrieve some host data' do
         quiet_stderr do
           host_data_string = 'test host data'
-          csound_perform do
+          csound_perform(@args) do
             |cs|
             expect((hdp = FFI::Utilities.set_string(host_data_string)).class).to be(FFI::MemoryPointer)
             expect(CsoundAPIRuby::Lib::Functions::csoundSetHostData(cs, hdp)).to eq(nil)
@@ -223,24 +223,10 @@ describe CsoundAPIRuby::Lib::Functions do
         end
       end
 
-      it 'is able to set an extra option on the fly' do
-        quiet_stderr do
-          new_0dBFS = 4.0
-          opt = "--0dbfs=#{new_0dBFS}"
-          csound_init do
-            |cs|
-            expect((opt_p = FFI::Utilities.set_string(opt)).class).to be(FFI::MemoryPointer)
-            expect(CsoundAPIRuby::Lib::Functions::csoundSetOption(cs, opt_p)).to eq(0)
-            expect(res = CsoundAPIRuby::Lib::Functions::csoundCompileArgs(cs, @args.size, FFI::Utilities.set_argv(@args))).to eq(0)
-            expect(CsoundAPIRuby::Lib::Functions::csoundGet0dBFS(cs)).to eq(new_0dBFS)
-          end
-        end
-      end
-
       it 'is able to set and retrieve the debug flag' do
         quiet_stderr do
           debug_value = 1
-          csound_perform do
+          csound_perform(@args) do
             |cs|
             expect(CsoundAPIRuby::Lib::Functions::csoundSetDebug(cs, debug_value)).to eq(nil)
             expect(CsoundAPIRuby::Lib::Functions::csoundGetDebug(cs)).to eq(debug_value)

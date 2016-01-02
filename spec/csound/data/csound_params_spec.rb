@@ -5,6 +5,12 @@ describe CsoundAPIRuby::Lib::Data::CsoundParams do
 
   include Spec::Utilities
 
+  before :example do
+    @csd_filename = File.join(SPEC_CSOUND_FIXTURE_PATH, 'simple.csd')
+    @frame_size = 1024 # size of a frame
+    @args = [ 'fake_csound', "-b #{@frame_size}", '--messagelevel=0', '--nosound', '--nodisplays', @csd_filename ]
+  end
+
   it 'cannot be created by itself' do
     quiet_stderr do
       expect { CsoundAPIRuby::Lib::Data::CsoundParams.new }.to raise_error(NoMethodError)
@@ -21,7 +27,7 @@ describe CsoundAPIRuby::Lib::Data::CsoundParams do
     quiet_stderr do
       csound_init do
         |cs|
-        expect((CsoundAPIRuby::Lib::Data::CsoundParams.create(cs)).class).to be(CsoundAPIRuby::Lib::Data::CsoundParams)
+        expect((CsoundAPIRuby::Lib::Data::CsoundParams.create()).class).to be(CsoundAPIRuby::Lib::Data::CsoundParams)
       end
     end
   end
@@ -30,7 +36,7 @@ describe CsoundAPIRuby::Lib::Data::CsoundParams do
     quiet_stderr do
       csound_init do
         |cs|
-        expect((cs_params = CsoundAPIRuby::Lib::Data::CsoundParams.create(cs)).class).to be(CsoundAPIRuby::Lib::Data::CsoundParams)
+        expect((cs_params = CsoundAPIRuby::Lib::Data::CsoundParams.create()).class).to be(CsoundAPIRuby::Lib::Data::CsoundParams)
         cs_params.layout.members.each do
           |m|
           w_m = (m.to_s + '=').to_sym
@@ -41,6 +47,20 @@ describe CsoundAPIRuby::Lib::Data::CsoundParams do
           value = cs_params.send(w_m, value)
           expect(value.nil? || value.is_a?(Numeric)).to be(true)
         end
+      end
+    end
+  end
+
+  it 'can use the proper csound setters/getters' do
+    quiet_stderr do
+      csound_init do
+        |cs|
+        expect((cs_params = CsoundAPIRuby::Lib::Data::CsoundParams.create()).class).to be(CsoundAPIRuby::Lib::Data::CsoundParams)
+        expect(CsoundAPIRuby::Lib::Functions.csoundGetParams(cs, cs_params)).to eq(nil)
+        expect(dbg_mode = cs_params.debug_mode).to be >= (0)
+        expect(new_dbg_mode = cs_params.debug_mode = dbg_mode + 1).to eq(dbg_mode + 1)
+        expect(CsoundAPIRuby::Lib::Functions.csoundSetParams(cs, cs_params)).to eq(nil)
+        expect(CsoundAPIRuby::Lib::Functions.csoundGetDebug(cs)).to eq(new_dbg_mode)
       end
     end
   end
