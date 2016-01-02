@@ -9,4 +9,4 @@ group :test do
   gem "codeclimate-test-reporter", require: nil
 end
 
-gem 'ruby-FFI-utilities', :git => 'https://github.com/nicb/ruby-FFI-utilities'
+gem 'ruby-FFI-utilities'
