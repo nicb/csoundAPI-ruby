@@ -13,7 +13,7 @@ begin
     header
     myflt
     csound_params
-  ).each do |f| byebug if f == 'csound_params'; require File.join(CsoundAPIRuby::Lib::Data::PATH, f); end
+  ).each { |f| require File.join(CsoundAPIRuby::Lib::Data::PATH, f) }
 rescue LoadError => msg
   STDERR.puts("Have you run the rake FFI:struct:generate task?\n\t(error: #{msg})")
   raise LoadError
