@@ -1,3 +1,5 @@
+require 'byebug'
+
 module CsoundAPIRuby
   module Lib
     module Data
@@ -11,7 +13,8 @@ begin
     header
     myflt
     csound_params
-  ).each { |f| require File.join(CsoundAPIRuby::Lib::Data::PATH, f) }
+  ).each do |f| byebug if f == 'csound_params'; require File.join(CsoundAPIRuby::Lib::Data::PATH, f); end
 rescue LoadError => msg
-  STDERR.puts("Have you run the rake csound:struct:generate task? (error: #{msg})")
+  STDERR.puts("Have you run the rake FFI:struct:generate task?\n\t(error: #{msg})")
+  raise LoadError
 end
