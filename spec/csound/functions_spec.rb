@@ -63,15 +63,15 @@ describe CsoundAPIRuby::Lib::Functions do
       # FIXME: these succeed locally but fail on travis, so we kill them for now until we know what to do
       # with them
       #
-#     it 'returns the version' do
-#       expect(v = fixture_syscall("#{SPEC_C_FIXTURE_PATH}/csound_version")).to be > 0
-#       expect(CsoundAPIRuby::Lib::Functions::csoundGetVersion()).to eq(v)
-#     end
+      it 'returns the version', :broken_on_travis => true do
+        expect(v = fixture_syscall("#{SPEC_C_FIXTURE_PATH}/csound_version")).to be > 0
+        expect(CsoundAPIRuby::Lib::Functions::csoundGetVersion()).to eq(v)
+      end
 
-#     it 'returns the API version' do
-#       expect(v = fixture_syscall("#{SPEC_C_FIXTURE_PATH}/csound_API_version")).to be > 0
-#       expect(CsoundAPIRuby::Lib::Functions::csoundGetAPIVersion()).to eq(v)
-#     end
+      it 'returns the API version', :broken_on_travis => true do
+        expect(v = fixture_syscall("#{SPEC_C_FIXTURE_PATH}/csound_API_version")).to be > 0
+        expect(CsoundAPIRuby::Lib::Functions::csoundGetAPIVersion()).to eq(v)
+      end
 
     end
 

@@ -14,8 +14,14 @@ ifeq ($(OS_NAME), osx)
   SUFFIX = dylib
 	OSFX = o
 endif
+ifneq ($(TRAVIS), "true")
+	#
+	# put here all the targets that for a reason or another break on travis
+  LIBS=-lcsnd6 -lcsound64
+  BROKEN_TRAVIS_TARGETS = csound_version csound_API_version
+endif
 
-TARGETS=sizeof_CSOUND_PARAMS sizeof_MYFLT # csound_version csound_API_version
+TARGETS=sizeof_CSOUND_PARAMS sizeof_MYFLT $(BROKEN_TRAVIS_TARGETS)
 SOURCES=$(TARGETS:=.c)
 TOP=../../..
 EXTPATH=$(TOP)/ext
@@ -23,8 +29,7 @@ CS6MAKEDIR=$(EXTPATH)/cs6make
 CSOUNDDIR=$(EXTPATH)/csound
 CC=gcc
 CFLAGS=-Wall -g -I$(CS6MAKEDIR)/include -I$(CSOUNDDIR)/include
-LDFLAGS=-L$(CS6MAKEDIR) # $(LIBS)
-LIBS=-lcsnd6 -lcsound64
+LDFLAGS=-L$(CS6MAKEDIR) $(LIBS)
 
 all: $(TARGETS)
 
