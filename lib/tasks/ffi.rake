@@ -18,7 +18,7 @@ namespace :FFI do
         |ffi_file|
         ruby_file = ffi_file.gsub(/\.ffi$/,'')
         unless uptodate?(ruby_file, [ ffi_file ])
-          puts "--- generating: #{File.basename(ffi_file)} => #{File.basename(ruby_file)}"
+          puts "--- generating: #{File.basename(ffi_file)} => #{File.basename(ruby_file)}" unless ENV['SILENT']
           require File.join(FFI_DATA_PATH, 'header')
           FFI::Generator.new ffi_file, ruby_file, FFI_OPTIONS
         end

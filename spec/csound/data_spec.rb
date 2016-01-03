@@ -35,6 +35,14 @@ describe 'CsoundAPIRuby::Lib::Data' do
   end
 
   #
+  # clean up after yourself
+  #
+  after :example do
+    command = 'rake --silent SILENT=true FFI:struct:generate'
+    system(command)
+  end
+
+  #
   # <tt>undef_constant(const)</tt>
   #
   # undef a constant within a given +module+ (if defined)
