@@ -9,4 +9,5 @@ end
 %w(
   quiet_stderr
   csound
+  fixture_syscall
 ).each { |f| require File.join(Spec::Utilities::PATH, f) }

@@ -8,6 +8,8 @@ end
 
 %w(
   header
+  csoundGetVersion
+  csoundGetAPIVersion
   csoundCreate
   csoundCompile
   csoundCompileArgs

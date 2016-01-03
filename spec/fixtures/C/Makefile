@@ -15,7 +15,7 @@ ifeq ($(OS_NAME), osx)
 	OSFX = o
 endif
 
-TARGETS=sizeof_CSOUND_PARAMS sizeof_MYFLT
+TARGETS=sizeof_CSOUND_PARAMS sizeof_MYFLT csound_version csound_API_version
 SOURCES=$(TARGETS:=.c)
 TOP=../../..
 EXTPATH=$(TOP)/ext
@@ -23,7 +23,8 @@ CS6MAKEDIR=$(EXTPATH)/cs6make
 CSOUNDDIR=$(EXTPATH)/csound
 CC=gcc
 CFLAGS=-Wall -g -I$(CS6MAKEDIR)/include -I$(CSOUNDDIR)/include
-LDFLAGS=-L$(CS6MAKEDIR)
+LDFLAGS=-L$(CS6MAKEDIR) $(LIBS)
+LIBS=-lcsnd6 -lcsound64
 
 all: $(TARGETS)
 

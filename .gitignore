@@ -49,6 +49,8 @@ Gemfile.lock
 #
 /spec/fixtures/C/sizeof_CSOUND_PARAMS
 /spec/fixtures/C/sizeof_MYFLT
+/spec/fixtures/C/csound_version
+/spec/fixtures/C/csound_API_version
 
 # no core dumps
 core
