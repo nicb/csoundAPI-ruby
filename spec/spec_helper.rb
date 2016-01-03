@@ -1,17 +1,12 @@
-if ENV['CODECLIMATE_REPO_TOKEN']
-  require 'codeclimate-test-reporter'
-  CodeClimate::TestReporter.start do
-    add_filter '/spec/'
-    add_filter '/lib/csoundAPI_ruby/lib/data/myflt.rb'
-    add_filter '/lib/tasks/'
-  end
-else
-	require 'simplecov'
-  SimpleCov.start do
-    add_filter '/spec/'
-    add_filter '/lib/csoundAPI_ruby/lib/data/myflt.rb'
-    add_filter '/lib/tasks/'
-  end
+require 'codeclimate-test-reporter'
+SimpleCov.start do
+  add_filter '/spec/'
+  add_filter '/lib/csoundAPI_ruby/lib/data/myflt.rb'
+  add_filter '/lib/tasks/'
+  formatter SimpleCov::Formatter::MultiFormatter.new([
+    SimpleCov::Formatter::HTMLFormatter,
+    CodeClimate::TestReporter::Formatter
+  ])
 end
 $LOAD_PATH.unshift File.expand_path(File.join(['..'] * 2, 'lib'), __FILE__)
 require File.join('bundler', 'setup')
