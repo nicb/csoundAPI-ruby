@@ -9,6 +9,8 @@ Within the module `CsoundAPIRuby::Lib::Functions`:
 * `csoundCompileArgs, [:pointer, :int, :pointer], :int`
 * `csoundCompileCsd, [:pointer, :pointer], :int`
 * `csoundCompileOrc, [:pointer, :pointer], :int`
+* `csoundGetVersion, [], :int`
+* `csoundGetAPIVersion, [], :int`
 
 [perform functions](https://csound.github.io/docs/api/group__PERFORMANCE.html)
 
@@ -39,3 +41,5 @@ cleanup functions
 * `csoundSetOption, [:pointer, :pointer], :int`
 * `csoundGetDebug, [:pointer], :int`
 * `csoundSetDebug, [:pointer, :int], :void`
+* `csoundSetParams, [:pointer, CsoundAPIRuby::Lib::Data::CsoundParams.by_ref], :void`
+* `csoundGetParams, [:pointer, CsoundAPIRuby::Lib::Data::CsoundParams.by_ref], :void`
