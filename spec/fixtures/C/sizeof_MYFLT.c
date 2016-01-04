@@ -1,3 +1,3 @@
 #include "csound.h"
 
-int main() { return sizeof(MYFLT); }
+int main() { int v = sizeof(MYFLT); printf("%d", v); exit(v); }

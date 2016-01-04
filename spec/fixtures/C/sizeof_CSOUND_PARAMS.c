@@ -1,3 +1,3 @@
 #include "csound.h"
 
-int main() { return sizeof(CSOUND_PARAMS); }
+int main() { int v = sizeof(CSOUND_PARAMS); printf("%d", v); exit(v); }

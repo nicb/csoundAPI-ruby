@@ -1,15 +1,17 @@
 require 'spec_helper'
+require_relative File.join(['..'] * 2, 'utilities')
 
 describe 'CsoundAPIRuby::Lib::Data::MYFLT' do
+
+  include Spec::Utilities
 
   before :example do
     @arg_1, @arg_2, @arg_3 = 23, 23.2323, 123456789
   end
 
   it 'should have the same size as the C typedef' do
-    system("#{SPEC_C_FIXTURE_PATH}/sizeof_MYFLT")
-    expect(c_size = $?.exitstatus).to be > 0
-    expect(CsoundAPIRuby::Lib::Data::MYFLT.size).to eq(c_size)
+    expect(v = fixture_syscall("#{SPEC_C_FIXTURE_PATH}/sizeof_MYFLT")).to be > 0
+    expect(CsoundAPIRuby::Lib::Data::MYFLT.size).to eq(v)
   end
 
   module CsoundAPIRuby::Lib::Data::Test

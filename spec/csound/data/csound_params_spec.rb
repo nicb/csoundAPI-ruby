@@ -1,4 +1,4 @@
-require_relative File.join(['..'] * 2, 'spec_helper')
+require 'spec_helper'
 require_relative File.join(['..'] * 2, 'utilities')
 
 describe CsoundAPIRuby::Lib::Data::CsoundParams do
@@ -18,9 +18,8 @@ describe CsoundAPIRuby::Lib::Data::CsoundParams do
   end
 
   it 'has the correct calculated size' do
-    system("#{SPEC_C_FIXTURE_PATH}/sizeof_CSOUND_PARAMS")
-    expect(c_size = $?.exitstatus).to be > 0
-    expect(CsoundAPIRuby::Lib::Data::CsoundParams.size).to eq(c_size)
+    expect(v = fixture_syscall("#{SPEC_C_FIXTURE_PATH}/sizeof_CSOUND_PARAMS")).to be > 0
+    expect(CsoundAPIRuby::Lib::Data::CsoundParams.size).to eq(v)
   end
 
   it 'is created through the :create class method' do

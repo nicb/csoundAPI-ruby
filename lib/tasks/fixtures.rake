@@ -5,12 +5,12 @@ namespace :fixtures do
 
     desc 'build the C library fixture'
     task :build do
-      cd(C_FIXTURE_PATH) { sh "make OS_NAME=#{guess_platform}" }
+      cd(C_FIXTURE_PATH) { sh "make TRAVIS=#{ENV['TRAVIS']} OS_NAME=#{guess_platform}" }
     end
 
     desc 'cleanup the C library fixture'
     task :clean do
-      cd(C_FIXTURE_PATH) { sh "make OS_NAME=\"#{guess_platform}\" clean" }
+      cd(C_FIXTURE_PATH) { sh "make TRAVIS=#{ENV['TRAVIS']} OS_NAME=\"#{guess_platform}\" clean" }
     end
 
     def guess_platform
