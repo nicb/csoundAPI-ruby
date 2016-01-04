@@ -24,6 +24,6 @@ SPEC_C_FIXTURE_PATH = File.join(SPEC_FIXTURE_PATH, 'C')
 #
 RSpec.configure do |c|
   conf_specs = { :broken => true, :obsolete => true }
-  conf_specs.update(:broken_on_travis => true) if ENV['TRAVIS']
+# conf_specs.update(:broken_on_travis => true) if ENV['TRAVIS']
   c.filter_run_excluding conf_specs
 end
