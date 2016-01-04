@@ -14,13 +14,13 @@ ifeq ($(OS_NAME), osx)
   SUFFIX = dylib
 	OSFX = o
 endif
-ifeq ($(TRAVIS),)
+#ifeq ($(TRAVIS),)
 	#
 	# put here all the targets that for a reason or another break on travis
 	#
   LIBS=-lcsnd6 -lcsound64
   BROKEN_TRAVIS_TARGETS = csound_version csound_API_version
-endif
+#endif
 
 TARGETS=sizeof_CSOUND_PARAMS sizeof_MYFLT $(BROKEN_TRAVIS_TARGETS)
 SOURCES=$(TARGETS:=.c)
